@@ -34,3 +34,32 @@ print(myLibrary.bookCatalog)
 
 print(myLibrary.searchBook("Book 3"))
 print(myLibrary.searchBook("Book 4"))
+
+
+// 2
+class Task {
+    var title: String
+    var description: String
+    var status: String
+    
+    init (title: String, description: String, status: String) {
+        self.title = title
+        self.description = description
+        self.status = status
+    }
+    
+    func changeStatus(_ taskStatus: String) {
+        status = taskStatus
+    }
+    
+    func displayInfo() {
+        print("Task title: \(title)")
+        print("Task description: \(description)")
+        print("Task status: \(status)")
+    }
+}
+
+var myTask = Task(title: "Homework", description: "Make assignment 1", status: "In process")
+myTask.displayInfo()
+myTask.changeStatus("Done")
+myTask.displayInfo()
