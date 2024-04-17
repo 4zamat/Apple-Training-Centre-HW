@@ -63,3 +63,45 @@ var myTask = Task(title: "Homework", description: "Make assignment 1", status: "
 myTask.displayInfo()
 myTask.changeStatus("Done")
 myTask.displayInfo()
+
+// 3
+struct Product {
+    let name: String
+    let price: Double
+    let quantityInStock: Int
+    let category: String
+}
+
+class Store {
+    var storage: [Product]
+    
+    init () {
+        self.storage = []
+    }
+    
+    func addGood(_ good: Product) {
+        storage.append(good)
+    }
+    
+    func removeGood(_ good: Product) {
+        if let index = storage.firstIndex(where: { $0.name == good.name }) {
+            storage.remove(at: index)
+        }
+    }
+    
+    func searchGood(_ good: String) -> Product?{
+        return storage.first(where: { $0.name == good })
+    }
+    
+    func searchGood(category: String) -> [Product] {
+        return storage.filter({ $0.category == category })
+    }
+    
+}
+let myStore = Store()
+let product1 = Product(name: "Apple", price: 150, quantityInStock: 100, category: "Fruit")
+myStore.addGood(product1)
+print(myStore.storage)
+print(myStore.searchGood("Apple"))
+myStore.removeGood(product1)
+print(myStore.storage)
